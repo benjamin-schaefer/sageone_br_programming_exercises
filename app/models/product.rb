@@ -1,6 +1,10 @@
 class Product < ActiveRecord::Base
   def self.import(file) 
 
+    print "*" * 30
+    print file
+    print "*" * 30
+
     case File.extname(file.original_filename)
       when '.csv'
         import_csv(file)
@@ -43,13 +47,38 @@ class Product < ActiveRecord::Base
         for_sale: row['Para Venda'],
         coin: row['Moeda']
       )
-      product.save!
+      try_save(product)
     end
   end
 
   # youDoInvoice
   def self.import_txt(file)
+    file = File.open(file.path)
 
+    while(row = file.gets)
+      next unless row[0] == 'I'
+      cols = row.split('|')
+      product = Product.new(
+        code: cols[1],
+        description: cols[2],
+        barcode: cols[9] || cols[3],
+        ncm: cols[4],
+        pip: cols[5],
+        gender: cols[6],
+        unity: cols[7],
+        value: cols[10] || cols[8],
+        quantity: cols[11]
+      )
+      try_save(product)
+    end
+  end
+
+  def self.try_save(product)
+    if product.valid?
+      product.save 
+    else
+      raise product.errors 
+    end    
   end
 
 end
