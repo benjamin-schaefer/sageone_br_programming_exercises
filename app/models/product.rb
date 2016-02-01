@@ -1,10 +1,5 @@
 class Product < ActiveRecord::Base
   def self.import(file) 
-
-    print "*" * 30
-    print file
-    print "*" * 30
-
     case File.extname(file.original_filename)
       when '.csv'
         import_csv(file)

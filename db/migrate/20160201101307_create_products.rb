@@ -34,7 +34,6 @@ class CreateProducts < ActiveRecord::Migration
       t.string :code
       t.string :comments
       t.string :provider
-      t.float :ncm_code
       t.float :pip
       t.string :gender
       t.string :value

@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20160201101307) do
     t.string   "coin"
     t.string   "code"
     t.string   "comments"
-    t.float    "ncm_code"
     t.float    "pip"
     t.string   "gender"
     t.string   "value"
