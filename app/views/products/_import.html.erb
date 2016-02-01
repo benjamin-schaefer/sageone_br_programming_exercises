@@ -1,0 +1,19 @@
+<h2>Import product</h2>
+
+<%= form_tag import_products_path, multipart: true do %>
+  <table>
+    <tr>
+      <td>
+        <%= label_tag :file, 'Select a File' %>
+      </td>
+    </tr>
+      <td>
+        <%= file_field_tag :file %>
+      </td>
+    <tr>
+      <td>
+        <%= submit_tag 'Import' %>
+      </td>
+    </tr>
+  </table>
+<% end %>

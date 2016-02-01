@@ -1,0 +1,157 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :unity %><br>
+    <%= f.text_field :unity %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :identification %><br>
+    <%= f.text_field :identification %>
+  </div>
+  <div class="field">
+    <%= f.label :cost %><br>
+    <%= f.text_field :cost %>
+  </div>
+  <div class="field">
+    <%= f.label :selling_price_1 %><br>
+    <%= f.text_field :selling_price_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :observations %><br>
+    <%= f.text_field :observations %>
+  </div>
+  <div class="field">
+    <%= f.label :provider %><br>
+    <%= f.text_field :provider %>
+  </div>
+  <div class="field">
+    <%= f.label :inventory %><br>
+    <%= f.text_field :inventory %>
+  </div>
+  <div class="field">
+    <%= f.label :barcode %><br>
+    <%= f.text_field :barcode %>
+  </div>
+  <div class="field">
+    <%= f.label :selling_price_2 %><br>
+    <%= f.text_field :selling_price_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :selling_price_3 %><br>
+    <%= f.text_field :selling_price_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :min_stock %><br>
+    <%= f.text_field :min_stock %>
+  </div>
+  <div class="field">
+    <%= f.label :max_stock %><br>
+    <%= f.text_field :max_stock %>
+  </div>
+  <div class="field">
+    <%= f.label :stock_purchase %><br>
+    <%= f.text_field :stock_purchase %>
+  </div>
+  <div class="field">
+    <%= f.label :factor_pcs_of_sales %><br>
+    <%= f.text_field :factor_pcs_of_sales %>
+  </div>
+  <div class="field">
+    <%= f.label :ncm %><br>
+    <%= f.text_field :ncm %>
+  </div>
+  <div class="field">
+    <%= f.label :brand %><br>
+    <%= f.text_field :brand %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br>
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br>
+    <%= f.text_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :inactive %><br>
+    <%= f.text_field :inactive %>
+  </div>
+  <div class="field">
+    <%= f.label :kind %><br>
+    <%= f.text_field :kind %>
+  </div>
+  <div class="field">
+    <%= f.label :composition %><br>
+    <%= f.text_field :composition %>
+  </div>
+  <div class="field">
+    <%= f.label :feedstock %><br>
+    <%= f.text_field :feedstock %>
+  </div>
+  <div class="field">
+    <%= f.label :material_imprint %><br>
+    <%= f.text_field :material_imprint %>
+  </div>
+  <div class="field">
+    <%= f.label :for_sale %><br>
+    <%= f.text_field :for_sale %>
+  </div>
+  <div class="field">
+    <%= f.label :coin %><br>
+    <%= f.text_field :coin %>
+  </div>
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br>
+    <%= f.text_field :comments %>
+  </div>
+  <div class="field">
+    <%= f.label :provider %><br>
+    <%= f.text_field :provider %>
+  </div>
+  <div class="field">
+    <%= f.label :ncm_code %><br>
+    <%= f.text_field :ncm_code %>
+  </div>
+  <div class="field">
+    <%= f.label :pip %><br>
+    <%= f.text_field :pip %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.text_field :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br>
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.text_field :quantity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
