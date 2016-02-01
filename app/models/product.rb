@@ -6,12 +6,13 @@ class Product < ActiveRecord::Base
       when '.txt'
         import_txt(file)
       else
-        raise 'Unsupported file format - only csv and txt import submitted'
+        raise 'Unsupported file format - only csv and txt import supported'
       end
   end
 
   # blueBill
   def self.import_csv(file)
+    products = []
     CSV.foreach(file.path, headers:true, col_sep: ';') do |row|
       product = Product.new(
         category: row['Categoria'],
@@ -42,12 +43,14 @@ class Product < ActiveRecord::Base
         for_sale: row['Para Venda'],
         coin: row['Moeda']
       )
-      try_save(product)
+      products.push(product)
     end
+    try_save(products)
   end
 
   # youDoInvoice
   def self.import_txt(file)
+    products = []
     file = File.open(file.path)
 
     while(row = file.gets)
@@ -64,16 +67,21 @@ class Product < ActiveRecord::Base
         value: cols[10] || cols[8],
         quantity: cols[11]
       )
-      try_save(product)
+      products.push(product)
     end
+    try_save(products)
   end
 
-  def self.try_save(product)
-    if product.valid?
-      product.save 
-    else
-      raise product.errors 
-    end    
+  def self.try_save(products)
+    Product.transaction do 
+      products.each do |product|
+        if product.valid?
+          product.save!
+        else
+          raise ActiveRecord::Rollback, product.errors 
+        end  
+      end  
+    end
   end
 
 end
